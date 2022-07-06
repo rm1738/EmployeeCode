@@ -1,15 +1,31 @@
 import sqlite3
 
-conn = sqlite3.connect("Employees.sqlite")
+conn = sqlite3.connect("emp.sqlite")
 
 cursor = conn.cursor()
-sql_query = """ CREATE TABLE employee (
+table = """ CREATE TABLE employee (
     id integer PRIMARY KEY,
     empID integer NOT NULL,
+    deptID integer NOT NULL, 
+    locID integer NOT NULL,
     name text NOT NULL,
-    department text NOT NULL,
-    salary float NOT NULL
+    salary float NOT NULL,
+    email text NOT NULL
 )"""
-cursor.execute(sql_query)
 
 
+tableB = """ CREATE TABLE department (
+    id integer PRIMARY KEY,
+    deptID integer NOT NULL
+    name text NOT NULL
+)"""
+
+
+tableC = """ CREATE TABLE location (
+    id integer PRIMARY KEY,
+    locID integer NOT NULL,
+    name text NOT NULL
+)"""
+cursor.execute(table)
+cursor.execute(tableB)
+cursor.execute(tableC)
